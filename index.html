@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Elbarbary | Cybersecurity Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-color: #2ea043; /* Cyber Green */
+            --accent-glow: rgba(46, 160, 67, 0.4);
+            --border-color: #30363d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fira Code', monospace;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 50px 0;
+        }
+
+        /* Header Layout: Photo on Left, Text Center, CV Button on Right */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* الصورة الشخصية على اليسار وبشكل دائري مثالي */
+        .profile-box {
+            flex: 1;
+            text-align: left;
+        }
+
+        .profile-box img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* البيانات الشخصية في المنتصف */
+        .header-text {
+            flex: 2;
+            text-align: center;
+        }
+
+        .header-text h1 {
+            font-size: 2.3rem;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .header-text h2 {
+            color: var(--accent-color);
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* مكان اللوجو القديم على اليمين - الآن يحتوي على زر السيرة الذاتية */
+        .cv-box {
+            flex: 1;
+            text-align: right;
+        }
+
+        /* تصميم مميز وجذاب لزر الـ CV يتوافق مع طابع الأمن السيبراني */
+        .cv-button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            background: rgba(46, 160, 67, 0.05);
+            border: 2px solid var(--accent-color);
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(46, 160, 67, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cv-button:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 40px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 10px var(--accent-glow);
+            border-color: var(--accent-color);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            display: inline-block;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        /* Timeline Items */
+        .timeline-item {
+            margin-bottom: 25px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-header h3 {
+            font-size: 1.15rem;
+            color: #ffffff;
+        }
+
+        .date {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            background: rgba(46, 160, 67, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .subtitle {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .project-highlight {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent-color);
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(46, 160, 67, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(46, 160, 67, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design for Mobile Devices */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-box, .cv-box {
+                text-align: center;
+                flex: none;
+            }
+            .timeline-header {
+                flex-direction: column;
+            }
+            .date {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="header-container">
+            <div class="profile-box">
+                <img src="photo.jpg" alt="Ahmed Elbarbary">
+            </div>
+            
+            <div class="header-text">
+                <h1>AHMED ELBARBARY</h1>
+                <h2>CYBERSECURITY TRAINEE</h2>
+                <div class="contact-info">
+                    <span>📍 Kafrelsheikh, Egypt</span>
+                    <span>📞 +201015965232</span>
+                    <span>✉️ albrbry04@gmail.com</span>
+                </div>
+            </div>
+            
+            <div class="cv-box">
+                <a href="CV.pdf" target="_blank" class="cv-button">[ ACCESS_CV ]</a>
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-title">About Me</h2>
+            <p>I am a dedicated Information Technology graduate with a solid foundation in computer science and a strong passion for networking and cybersecurity. Equipped with hands-on lab experience in penetration testing, vulnerability assessment, and system administration across Linux and Windows Server environments. Proficient in Python and C#, I am eager to leverage my comprehensive academic background and self-driven security training to protect and enhance organizational infrastructure.</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Hands-on Experience & Labs</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Cybersecurity Home Labs</h3>
+                    <span class="date">2024 - 2026</span>
+                </div>
+                <div class="subtitle">Penetration Testing Trainee</div>
+                <ul>
+                    <li>Configured and executed simulated attacks in a home lab environment.</li>
+                    <li>Conducted web application vulnerability assessments and wireless network security testing.</li>
+                    <li>Applied practical attacks such as Man-in-the-Middle (MITM) and brute-force encryption techniques.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Network Infrastructure Labs</h3>
+                    <span class="date">2024 - 2026</span>
+                </div>
+                <div class="subtitle">Network Engineering Trainee</div>
+                <ul>
+                    <li>Designed and configured network topologies and wireless network environments in simulation labs.</li>
+                    <li>Gained hands-on experience with routing and switching protocols, IP addressing, and network troubleshooting based on CCNA and Network+ standards.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>IT Infrastructure Labs</h3>
+                    <span class="date">2024 - 2026</span>
+                </div>
+                <div class="subtitle">System Administration Trainee</div>
+                <ul>
+                    <li>Configured and managed Windows Server and Linux operating systems.</li>
+                    <li>Implemented Active Directory for secure user management and access control, ensuring efficient system operations.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Education & Certifications</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Kafrelsheikh University</h3>
+                    <span class="date">2022 - 2026</span>
+                </div>
+                <div class="subtitle">Bachelor's Degree in Information Technology</div>
+                <ul>
+                    <li>Studied core computer science fundamentals including Object-Oriented Programming (OOP), Data Structures, Database Management, and Computer Vision.</li>
+                    <li>Developed strong problem-solving skills and software development proficiency.</li>
+                </ul>
+                <div class="project-highlight">
+                    <strong>Graduation Project:</strong> Cyber Aegis — The Art of Cyber Defense: A Full-Spectrum SOC Against Real-World Attacks.
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <h3>Networking & Cybersecurity Training</h3>
+                    <span class="date">2023 - Present</span>
+                </div>
+                <div class="subtitle">Self-Study</div>
+                <ul>
+                    <li>Successfully completed comprehensive coursework including CS50, CompTIA Network+, CCNA, and CompTIA Security+.</li>
+                    <li>Continuously expanding technical knowledge and pursuing further advanced certifications in the field.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Network & Wireless Security</span>
+                <span class="skill-tag">Penetration Testing</span>
+                <span class="skill-tag">Vulnerability Assessment</span>
+                <span class="skill-tag">Linux & Windows Server</span>
+                <span class="skill-tag">Python & C# Programming</span>
+                <span class="skill-tag">OOP & Data Structures</span>
+                <span class="skill-tag">Database Management</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Collaboration</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>> root@ahmed-elbarbary:~# exit_</p>
+        </footer>
+    </div>
+
+</body>
+</html>
